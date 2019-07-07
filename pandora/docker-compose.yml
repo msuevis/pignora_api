@@ -1,14 +1,14 @@
 version: "3"
 services:
-  mongodb:
-    image: mongo:3.2.4
-    container_name: "mongodb"
-    ports:
-      - 27017:27017
-    command: --smallfiles
-  app:
+  #mongodb:
+    #image: mongo:3.2.4
+    #container_name: "mongodb"
+    #ports:
+    #  - 27017:27017
+    #command: --smallfiles
+  pandora:
     image: volmar/pandora
     ports:
-      - 8080:8080
-    links:
-      - mongodb
+      - 80001:80001
+    #links:
+      #- mongodb

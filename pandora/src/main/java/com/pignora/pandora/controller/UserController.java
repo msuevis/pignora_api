@@ -8,14 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(value = "/api/users/", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/api/users", produces = APPLICATION_JSON_VALUE)
 public class UserController {
 
     @Autowired
     private UserService userService;
 
     @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
-    @PostMapping
+    @PostMapping(consumes = APPLICATION_JSON_VALUE)
     public User save(@RequestBody User user){
         return userService.save(user);
     }
@@ -26,13 +26,13 @@ public class UserController {
     }
 
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public User one(@PathVariable String id) {
 
         return userService.findById(id).get();
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public void delete(@PathVariable String id) {
 
         userService.removeUser(id);
